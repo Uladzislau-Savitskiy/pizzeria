@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h1>{{ title }}</h1>
+<ul>
+    {% for pizza in pizzas %}
+    <li>
+        <h2>{{ pizza.name }}</h2>
+        <p>{{ pizza.ingredients| join:", "| capfirst }}</p>
+        <p>{{ pizza.price }}</p>
+        {% if pizza.is_spicy %}
+            <p>Остарая</p>
+        {% else %}
+            <p>Не остарая</p>
+        {% endif %}
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
