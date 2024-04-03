@@ -6,6 +6,34 @@ from django.template.loader import render_to_string
 # Create your views here.
 
 
+catalogs = [
+    {
+        'title': 'Меню',
+        'url_name': 'menu',
+     },
+    {
+        'title': 'Отзывы',
+        'url_name': 'reviews',
+     },
+    {
+        'title': 'Доставка',
+        'url_name': 'delivery',
+     },
+    {
+        'title': 'О нас',
+        'url_name': 'about',
+     },
+    {
+        'title': 'Корзина',
+        'url_name': 'order_cart',
+     },
+    {
+        'title': 'Войти',
+        'url_name': 'login',
+     },
+]
+
+
 bd_pizzas = [
     {
         "id": 1,
@@ -79,10 +107,14 @@ bd_drinks = [
 ]
 
 
+bd_order_cart = []
+
+
 def menu(request):
     # t = render_to_string('menu/menu.html')
     # return HttpResponse(t)
     data = {
+        'menu': catalogs,
         'title': 'Меню',
         'pizzas': bd_pizzas,
         'drinks': bd_drinks,
@@ -121,6 +153,15 @@ def archive(request, year):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
+
+
+# def order_cart(request):
+#     return HttpResponse('<h1>Корзина заказов </h1> ')
+#
+#
+# def add_order_cart(request, id_pizza):
+#     bd_order_cart.append(bd_pizzas[id_pizza])
+
 
 
 
